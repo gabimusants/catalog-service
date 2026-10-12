@@ -1,6 +1,7 @@
 package com.gabrielle.catalog_service.repository;
 
 import com.gabrielle.catalog_service.model.CatalogItem;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.data.mongodb.test.autoconfigure.DataMongoTest;
@@ -25,6 +26,11 @@ class CatalogItemRepositoryTest {
 
     @Autowired
     private CatalogItemRepository catalogItemRepository;
+
+    @BeforeEach
+    void limparBanco() {
+        catalogItemRepository.deleteAll();
+    }
 
     @Test
     void findBySku_deveEncontrarItemComAtributosFlexiveis() {
