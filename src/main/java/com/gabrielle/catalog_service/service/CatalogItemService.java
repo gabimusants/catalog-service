@@ -47,6 +47,11 @@ public class CatalogItemService {
         return catalogItemMapper.toResponseDTO(item);
     }
 
+    public CatalogItemResponseDTO findBySku(String sku) {
+        CatalogItem item = catalogItemRepository.findBySku(sku).orElseThrow(() -> new CatalogItemNotFoundException("Item não encontrado com SKU: " + sku));
+        return catalogItemMapper.toResponseDTO(item);
+    }
+
     public CatalogItemResponseDTO update(String id, CatalogItemRequestDTO dto) {
         CatalogItem existing = catalogItemRepository.findById(id)
                 .orElseThrow(() -> new CatalogItemNotFoundException("Item de catálogo não encontrado: " + id));

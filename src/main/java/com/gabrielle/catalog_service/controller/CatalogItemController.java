@@ -40,6 +40,11 @@ public class CatalogItemController {
         return ResponseEntity.ok(catalogItemService.findById(id));
     }
 
+    @GetMapping("/sku/{sku}")
+    public ResponseEntity<CatalogItemResponseDTO> findBySku(@PathVariable String sku) {
+        return ResponseEntity.ok(catalogItemService.findBySku(sku));
+    }
+
     @PutMapping("/{id}")
     public ResponseEntity<CatalogItemResponseDTO> update(@PathVariable String id, @Valid @RequestBody CatalogItemRequestDTO dto) {
         return ResponseEntity.ok(catalogItemService.update(id, dto));

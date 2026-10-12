@@ -1,0 +1,16 @@
+spring:
+  data:
+    mongodb:
+      uri: mongodb://${DB_USERNAME:catalog_user}:${DB_PASSWORD}@localhost:27017/${DB_NAME:catalog}?authSource=admin
+
+server:
+  port: 8081
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,env
+  endpoint:
+    env:
+      show-values: always
